@@ -6,4 +6,54 @@ public class Monster {
     private String type;
     private int power;
     private int health;
+    public Monster(){
+
+    }
+    public Monster(Long id, String name, String type, int power, int health){
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.power = power;
+        this.health = health;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getPower() {
+        return power;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
 }
