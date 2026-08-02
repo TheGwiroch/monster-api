@@ -3,7 +3,7 @@ package com.arsbog.monsterapi.service;
 import com.arsbog.monsterapi.model.Monster;
 import com.arsbog.monsterapi.repository.MonsterRepository;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -14,16 +14,20 @@ public class MonsterService {
     public MonsterService(MonsterRepository repository) {
         this.repository = repository;
     }
-    public List<Monster> findAll(){
+
+    public List<Monster> findAll() {
         return repository.findAll();
     }
-    public Optional<Monster> findById (Long id){
+
+    public Optional<Monster> findById(Long id) {
         return repository.findById(id);
     }
-    public Monster create(Monster monster){
+
+    public Monster create(Monster monster) {
         return repository.save(monster);
     }
-    public boolean deleteById(Long id){
+
+    public boolean deleteById(Long id) {
         return repository.deleteById(id);
     }
 }
