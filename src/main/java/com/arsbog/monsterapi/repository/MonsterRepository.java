@@ -10,20 +10,24 @@ import java.util.Optional;
 
 @Repository
 public class MonsterRepository {
-    private long nextId = 1;
-    public Monster save(Monster monster){
-    monster.setId(nextId++);
-    monsters.add(monster);
-    return monster;
-    }
     private final List<Monster> monsters = new ArrayList<>();
+    private long nextId = 1;
+
+    public Monster save(Monster monster) {
+        monster.setId(nextId++);
+        monsters.add(monster);
+        return monster;
+    }
+
     public List<Monster> findAll() {
         return monsters;
     }
-    public Optional<Monster> findById(Long id){
+
+    public Optional<Monster> findById(Long id) {
         return monsters.stream().filter(monster -> monster.getId().equals(id)).findFirst();
     }
-    public boolean deleteById(Long id){
+
+    public boolean deleteById(Long id) {
         return monsters.removeIf(monster -> monster.getId().equals(id));
     }
 }

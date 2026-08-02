@@ -9,8 +9,7 @@ public class Monster {
     public Monster(){
 
     }
-    public Monster(Long id, String name, String type, int power, int health){
-        this.id = id;
+    public Monster(String name, String type, int power, int health){
         this.name = name;
         this.type = type;
         this.power = power;
