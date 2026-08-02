@@ -25,7 +25,7 @@ public class MonsterController {
     public Monster create(@RequestBody Monster monster) {
         return service.create(monster);
     }
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public Optional<Monster> findById(@PathVariable Long id){
         return service.findById(id);
     }
