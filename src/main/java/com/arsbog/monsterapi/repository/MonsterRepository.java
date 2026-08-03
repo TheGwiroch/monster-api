@@ -30,4 +30,13 @@ public class MonsterRepository {
     public boolean deleteById(Long id) {
         return monsters.removeIf(monster -> monster.getId().equals(id));
     }
+
+    public Optional<Monster> update(Long id, Monster updatedMonster) {
+        Optional<Monster> monster = findById(id);
+            monster.get().setHealth(updatedMonster.getHealth());
+            monster.get().setName(updatedMonster.getName());
+            monster.get().setPower(updatedMonster.getPower());
+            monster.get().setType(updatedMonster.getType());
+        return monster;
+    }
 }

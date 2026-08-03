@@ -30,4 +30,7 @@ public class MonsterService {
     public boolean deleteById(Long id) {
         return repository.deleteById(id);
     }
+    public Optional<Monster> update (Long id, Monster updatedMonster){
+        return repository.update(id, updatedMonster);
+    }
 }
