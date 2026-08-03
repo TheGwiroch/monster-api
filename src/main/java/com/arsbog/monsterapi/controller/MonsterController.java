@@ -26,7 +26,7 @@ public class MonsterController {
 
     @PostMapping
     public ResponseEntity<Monster> create(@RequestBody Monster monster) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(monster);
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.create(monster));
     }
 
     @GetMapping("/{id}")
