@@ -33,6 +33,9 @@ public class MonsterRepository {
 
     public Optional<Monster> update(Long id, Monster updatedMonster) {
         Optional<Monster> monster = findById(id);
+        if (monster.isEmpty()){
+            return Optional.empty();
+        }
             monster.get().setHealth(updatedMonster.getHealth());
             monster.get().setName(updatedMonster.getName());
             monster.get().setPower(updatedMonster.getPower());

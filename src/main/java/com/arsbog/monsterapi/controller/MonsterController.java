@@ -44,7 +44,7 @@ public class MonsterController {
         }
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Monster> put(@PathVariable Long id, @RequestBody Monster monster){
+    public ResponseEntity<Monster> update(@PathVariable Long id, @RequestBody Monster monster){
         return service.update(id, monster).map(ResponseEntity::ok).orElseGet(()-> ResponseEntity.notFound().build());
     }
 }
