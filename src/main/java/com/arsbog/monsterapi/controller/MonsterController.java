@@ -2,6 +2,8 @@ package com.arsbog.monsterapi.controller;
 
 import com.arsbog.monsterapi.model.Monster;
 import com.arsbog.monsterapi.service.MonsterService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
@@ -23,8 +25,14 @@ public class MonsterController {
     }
 
     @PostMapping
-    public Monster create(@RequestBody Monster monster) {
-        return service.create(monster);
+    public ResponseEntity<Monster> create(@RequestBody Monster monster) {
+        Optional<Monster> createdMonster = Optional.ofNullable(service.create(monster));
+        if (createdMonster.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        else{
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdMonster.get());
+        }
     }
 
     @GetMapping("/{id}")
