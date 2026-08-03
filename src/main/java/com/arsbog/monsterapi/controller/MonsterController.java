@@ -26,13 +26,7 @@ public class MonsterController {
 
     @PostMapping
     public ResponseEntity<Monster> create(@RequestBody Monster monster) {
-        Optional<Monster> createdMonster = Optional.ofNullable(service.create(monster));
-        if (createdMonster.isEmpty()){
-            return ResponseEntity.noContent().build();
-        }
-        else{
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdMonster.get());
-        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(monster);
     }
 
     @GetMapping("/{id}")
