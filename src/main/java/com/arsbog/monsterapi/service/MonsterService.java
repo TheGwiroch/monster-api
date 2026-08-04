@@ -31,14 +31,17 @@ public class MonsterService {
         return repository.save(monster);
     }
 
-    public boolean deleteById(Long id) {
-        return repository.deleteById(id);
+    public void deleteById(Long id) {
+        boolean deleted = repository.deleteById(id);
+        if (!deleted){
+            throw new MonsterNotFoundException(id);
+        }
     }
 
     public Monster update(Long id, Monster updatedMonster) {
         return repository.update(id, updatedMonster).orElseThrow(() -> new MonsterNotFoundException(id));
     }
-    public Optional<Monster> updateHealth(Long id, Integer health){
-        return repository.updateHealth(id, health);
+    public Monster updateHealth(Long id, Integer health){
+        return repository.updateHealth(id, health).orElseThrow(()-> new MonsterNotFoundException(id));
     }
 }

@@ -38,12 +38,9 @@ public class MonsterController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
-        boolean response = service.deleteById(id);
-        if (response) {
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
+
     }
 
     @PutMapping("/{id}")
@@ -53,6 +50,6 @@ public class MonsterController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<Monster> updateHealth(@PathVariable Long id, @RequestBody UpdateMonsterHealthRequest updateMonsterHealthRequest) {
-        return service.updateHealth(id, updateMonsterHealthRequest.health()).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        return ResponseEntity.ok(service.updateHealth(id, updateMonsterHealthRequest.health()));
     }
 }
