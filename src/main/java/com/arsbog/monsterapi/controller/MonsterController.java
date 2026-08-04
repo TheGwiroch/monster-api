@@ -1,5 +1,6 @@
 package com.arsbog.monsterapi.controller;
 
+import com.arsbog.monsterapi.dto.UpdateMonsterHealthRequest;
 import com.arsbog.monsterapi.model.Monster;
 import com.arsbog.monsterapi.service.MonsterService;
 import org.springframework.http.HttpStatus;
@@ -18,9 +19,8 @@ public class MonsterController {
     }
 
     @GetMapping
-    public List<Monster> findAll(@RequestParam(required = false) Integer minPower)
-    {
-        if (minPower == null){
+    public List<Monster> findAll(@RequestParam(required = false) Integer minPower) {
+        if (minPower == null) {
             return service.findAll();
         }
         return service.findByMinPower(minPower);
@@ -45,8 +45,14 @@ public class MonsterController {
             return ResponseEntity.notFound().build();
         }
     }
+
     @PutMapping("/{id}")
-    public ResponseEntity<Monster> update(@PathVariable Long id, @RequestBody Monster monster){
-        return service.update(id, monster).map(ResponseEntity::ok).orElseGet(()-> ResponseEntity.notFound().build());
+    public ResponseEntity<Monster> update(@PathVariable Long id, @RequestBody Monster monster) {
+        return service.update(id, monster).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Monster> updateHealth(@PathVariable Long id, @RequestBody UpdateMonsterHealthRequest updateMonsterHealthRequest) {
+        return service.updateHealth(id, updateMonsterHealthRequest.health()).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

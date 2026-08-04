@@ -18,8 +18,9 @@ public class MonsterService {
     public List<Monster> findAll() {
         return repository.findAll();
     }
-    public List<Monster> findByMinPower(Integer minPower){
-        return repository.findAll().stream().filter((monster -> (monster.getPower()) >= minPower)).toList();
+
+    public List<Monster> findByMinPower(Integer minPower) {
+        return repository.findAll().stream().filter((monster -> monster.getPower() >= minPower)).toList();
     }
 
     public Optional<Monster> findById(Long id) {
@@ -33,7 +34,11 @@ public class MonsterService {
     public boolean deleteById(Long id) {
         return repository.deleteById(id);
     }
-    public Optional<Monster> update (Long id, Monster updatedMonster){
+
+    public Optional<Monster> update(Long id, Monster updatedMonster) {
         return repository.update(id, updatedMonster);
+    }
+    public Optional<Monster> updateHealth(Long id, Integer health){
+        return repository.updateHealth(id, health);
     }
 }

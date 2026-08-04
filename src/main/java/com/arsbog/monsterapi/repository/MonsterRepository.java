@@ -42,4 +42,10 @@ public class MonsterRepository {
             monster.get().setType(updatedMonster.getType());
         return monster;
     }
+    public Optional<Monster> updateHealth(Long id, Integer health){
+        return findById(id).map(monster -> {
+            monster.setHealth(health);
+            return monster;
+        });
+    }
 }
