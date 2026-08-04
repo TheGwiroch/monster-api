@@ -35,8 +35,8 @@ public class MonsterService {
         return repository.deleteById(id);
     }
 
-    public Optional<Monster> update(Long id, Monster updatedMonster) {
-        return repository.update(id, updatedMonster);
+    public Monster update(Long id, Monster updatedMonster) {
+        return repository.update(id, updatedMonster).orElseThrow(() -> new MonsterNotFoundException(id));
     }
     public Optional<Monster> updateHealth(Long id, Integer health){
         return repository.updateHealth(id, health);
