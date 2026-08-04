@@ -18,6 +18,9 @@ public class MonsterService {
     public List<Monster> findAll() {
         return repository.findAll();
     }
+    public List<Monster> findByMinPower(Integer minPower){
+        return repository.findAll().stream().filter((monster -> (monster.getPower()) >= minPower)).toList();
+    }
 
     public Optional<Monster> findById(Long id) {
         return repository.findById(id);

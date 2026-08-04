@@ -3,12 +3,10 @@ package com.arsbog.monsterapi.controller;
 import com.arsbog.monsterapi.model.Monster;
 import com.arsbog.monsterapi.service.MonsterService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/monsters")
@@ -20,8 +18,12 @@ public class MonsterController {
     }
 
     @GetMapping
-    public List<Monster> findAll() {
-        return service.findAll();
+    public List<Monster> findAll(@RequestParam(required = false) Integer minPower)
+    {
+        if (minPower == null){
+            return service.findAll();
+        }
+        return service.findByMinPower(minPower);
     }
 
     @PostMapping
