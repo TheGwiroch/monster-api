@@ -1,9 +1,9 @@
 package com.arsbog.monsterapi.service;
 
+import com.arsbog.monsterapi.exception.MonsterNotFoundException;
 import com.arsbog.monsterapi.model.Monster;
 import com.arsbog.monsterapi.repository.MonsterRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -23,8 +23,8 @@ public class MonsterService {
         return repository.findAll().stream().filter((monster -> monster.getPower() >= minPower)).toList();
     }
 
-    public Optional<Monster> findById(Long id) {
-        return repository.findById(id);
+    public Monster findById(Long id) {
+        return repository.findById(id).orElseThrow(() -> new MonsterNotFoundException(id));
     }
 
     public Monster create(Monster monster) {
