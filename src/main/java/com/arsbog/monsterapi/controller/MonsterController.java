@@ -29,8 +29,8 @@ public class MonsterController {
     }
 
     @PostMapping
-    public ResponseEntity<Monster> create(@Valid @RequestBody MonsterRequest monster) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.create(monster));
+    public ResponseEntity<Monster> create(@Valid @RequestBody MonsterRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.create(request));
     }
 
     @GetMapping("/{id}")
@@ -46,8 +46,8 @@ public class MonsterController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Monster> update(@PathVariable Long id, @Valid @RequestBody Monster monster) {
-        return ResponseEntity.ok(service.update(id, monster));
+    public ResponseEntity<Monster> update(@PathVariable Long id, @Valid @RequestBody MonsterRequest request) {
+        return ResponseEntity.ok(service.update(id, request));
     }
 
     @PatchMapping("/{id}")

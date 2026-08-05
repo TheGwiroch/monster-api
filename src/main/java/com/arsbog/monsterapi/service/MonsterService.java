@@ -40,7 +40,8 @@ public class MonsterService {
         }
     }
 
-    public Monster update(Long id, Monster updatedMonster) {
+    public Monster update(Long id, MonsterRequest request) {
+        Monster updatedMonster = new Monster(request.name(), request.type(), request.power(), request.health());
         return repository.update(id, updatedMonster).orElseThrow(() -> new MonsterNotFoundException(id));
     }
     public Monster updateHealth(Long id, Integer health){
