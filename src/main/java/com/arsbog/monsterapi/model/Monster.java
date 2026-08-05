@@ -1,19 +1,11 @@
 package com.arsbog.monsterapi.model;
-import jakarta.validation.constraints.*;
 
 public class Monster {
     private Long id;
-    @NotBlank
     private String name;
-    @NotBlank
     private String type;
-    @Positive
     private int power;
-    @Positive
     private int health;
-    public Monster(){
-
-    }
     public Monster(String name, String type, int power, int health){
         this.name = name;
         this.type = type;
