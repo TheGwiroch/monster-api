@@ -1,6 +1,5 @@
 package com.arsbog.monsterapi.model;
 import jakarta.validation.constraints.*;
-import org.springframework.web.bind.annotation.PostMapping;
 
 public class Monster {
     private Long id;
