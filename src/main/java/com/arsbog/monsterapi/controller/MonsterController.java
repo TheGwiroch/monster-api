@@ -45,12 +45,12 @@ public class MonsterController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Monster> update(@PathVariable Long id, @RequestBody Monster monster) {
+    public ResponseEntity<Monster> update(@PathVariable Long id, @Valid @RequestBody Monster monster) {
         return ResponseEntity.ok(service.update(id, monster));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Monster> updateHealth(@PathVariable Long id, @RequestBody UpdateMonsterHealthRequest updateMonsterHealthRequest) {
+    public ResponseEntity<Monster> updateHealth(@PathVariable Long id, @Valid @RequestBody UpdateMonsterHealthRequest updateMonsterHealthRequest) {
         return ResponseEntity.ok(service.updateHealth(id, updateMonsterHealthRequest.health()));
     }
 }
