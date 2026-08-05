@@ -3,6 +3,7 @@ package com.arsbog.monsterapi.controller;
 import com.arsbog.monsterapi.dto.UpdateMonsterHealthRequest;
 import com.arsbog.monsterapi.model.Monster;
 import com.arsbog.monsterapi.service.MonsterService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class MonsterController {
     }
 
     @PostMapping
-    public ResponseEntity<Monster> create(@RequestBody Monster monster) {
+    public ResponseEntity<Monster> create(@Valid @RequestBody Monster monster) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.create(monster));
     }
 
