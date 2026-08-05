@@ -1,5 +1,6 @@
 package com.arsbog.monsterapi.service;
 
+import com.arsbog.monsterapi.dto.MonsterRequest;
 import com.arsbog.monsterapi.exception.MonsterNotFoundException;
 import com.arsbog.monsterapi.model.Monster;
 import com.arsbog.monsterapi.repository.MonsterRepository;
@@ -27,7 +28,8 @@ public class MonsterService {
         return repository.findById(id).orElseThrow(() -> new MonsterNotFoundException(id));
     }
 
-    public Monster create(Monster monster) {
+    public Monster create(MonsterRequest request) {
+        Monster monster = new Monster(request.name(), request.type(), request.power(), request.health());
         return repository.save(monster);
     }
 

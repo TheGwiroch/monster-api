@@ -1,5 +1,6 @@
 package com.arsbog.monsterapi.controller;
 
+import com.arsbog.monsterapi.dto.MonsterRequest;
 import com.arsbog.monsterapi.dto.UpdateMonsterHealthRequest;
 import com.arsbog.monsterapi.model.Monster;
 import com.arsbog.monsterapi.service.MonsterService;
@@ -28,7 +29,7 @@ public class MonsterController {
     }
 
     @PostMapping
-    public ResponseEntity<Monster> create(@Valid @RequestBody Monster monster) {
+    public ResponseEntity<Monster> create(@Valid @RequestBody MonsterRequest monster) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.create(monster));
     }
 
